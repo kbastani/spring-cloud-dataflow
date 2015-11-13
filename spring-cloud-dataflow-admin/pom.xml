@@ -9,6 +9,9 @@
 		<version>1.0.0.BUILD-SNAPSHOT</version>
 	</parent>
 	<properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<start-class>org.springframework.cloud.dataflow.admin.AdminApplication</start-class>
 		<docker.image.prefix>springcloud</docker.image.prefix>

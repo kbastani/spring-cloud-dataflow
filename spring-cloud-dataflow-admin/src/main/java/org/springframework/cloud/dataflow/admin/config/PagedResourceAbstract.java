@@ -31,7 +31,7 @@ public class PagedResourceAbstract<T> extends PageImpl<T> {
      * @param total    the total amount of items available
      */
     public PagedResourceAbstract(List<T> content, Pageable pageable, long total) {
-        super(content.subList(pageable.getOffset(), pageable.getPageSize() + pageable.getOffset() > (int) total ? (int) total - 1 : pageable.getPageSize()), pageable, total);
+        super(content.subList(pageable.getOffset(), pageable.getPageSize() + pageable.getOffset() > (int) total ? (int) Math.max(total - 1, 0) : pageable.getPageSize()), pageable, total);
         this.metadata = new PagedResources.PageMetadata(getSize(), getNumber(), getTotalElements());
     }
 }

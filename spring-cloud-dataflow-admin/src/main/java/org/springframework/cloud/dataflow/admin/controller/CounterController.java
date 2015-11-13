@@ -33,7 +33,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -68,12 +67,7 @@ public class CounterController {
         /* Page */
         Iterable<Metric<?>> metrics = metricRepository.findAll(/* pageable */);
         List<Metric<Double>> content = filterCounters(metrics);
-        content.sort(new Comparator<Metric<Double>>() {
-            @Override
-            public int compare(Metric<Double> o1, Metric<Double> o2) {
-                return o2.getValue().compareTo(o1.getValue());
-            }
-        });
+        content.sort((o1, o2) -> o2.getValue().compareTo(o1.getValue()));
         return new PagedResourceAbstract<>(content, pageable, content.size());
     }
 
